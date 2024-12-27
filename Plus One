@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int n = digits.size();
+        
+        // Traverse the digits array in reverse
+        for (int i = n - 1; i >= 0; --i) {
+            if (digits[i] < 9) {
+                digits[i] += 1; // Simply add one if the digit is less than 9
+                return digits;
+            }
+            digits[i] = 0; // If the digit is 9, set it to 0 and continue
+        }
+        
+        // If we exit the loop, all digits were 9. Add a leading 1
+        digits.insert(digits.begin(), 1);
+        return digits;
+    }
+};
