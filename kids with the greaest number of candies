@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int maxx=candies[0];
+        int n=candies.size();
+        vector<bool> result(n, false);
+
+        // Calculatin max value
+        for(int i=0;i<n;i++)
+        {
+            if(candies[i]>=maxx)
+            {
+                maxx=candies[i];
+            }
+        }
+
+        // filling the bool array
+        for(int i=0;i<n;i++)
+        {
+            if(candies[i]+extraCandies>=maxx)
+            {
+                result[i]=true;
+            }
+            else 
+            {
+                result[i]=false;
+            }
+        }
+
+        return result;
+
+    }
+};
