@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string reverseVowels(string s) {
+        int n = s.size();
+        char list[10] = {'A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u'};
+        vector<char> reverse; 
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (s[i] == list[j]) {
+                    reverse.push_back(s[i]);
+                }
+            }
+        }
+
+        
+        int index = reverse.size() - 1; 
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (s[i] == list[j]) {
+                    s[i] = reverse[index]; 
+                    index--;                                   
+                    break;                
+                }
+            }
+        }
+
+        return s; 
+    }
+};
