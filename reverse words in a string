@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> words; // To store individual words
+        string word = "";
+        
+        // Split the string into words
+        for (char c : s) {
+            if (c != ' ') {
+                word += c; // Build the current word
+            } else if (!word.empty()) {
+                words.push_back(word); // Add the word to the list
+                word = ""; // Reset the word
+            }
+        }
+        // Add the last word if it exists
+        if (!word.empty()) {
+            words.push_back(word);
+        }
+        
+        // Reverse the order of words and construct the result
+        string result = "";
+        for (int i = words.size() - 1; i >= 0; i--) {
+            result += words[i];
+            if (i > 0) result += " "; // Add space between words
+        }
+        
+        return result;
+    }
+};
