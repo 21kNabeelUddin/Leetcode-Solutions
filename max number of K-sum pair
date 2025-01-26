@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        int n=nums.size();
+        int count=0;
+        int point1=0,point2=n-1;
+        sort(nums.begin(), nums.end());
+        while(point1<point2)
+        {
+            int sum = nums[point1] + nums[point2];
+            if(sum==k)//found a valid pair
+            {
+                point1++,point2--;
+                count++;
+            }
+            else if(sum<k){point1++;}//exceding sum so increase leftpointer 
+            else if(sum>k){point2--;}//less than sum so increase leftpointer
+        }
+        return count;
+    }
+};
