@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int size=s.size();
+        int n=t.size();
+        int track1=0,track2=0;
+    
+        if(size==0)
+        {
+            return true;
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(s[track1]==t[track2])
+            {
+                track1++,track2++;
+                if(track1==size)//checks if pointer value is equal to substring
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                track2++;
+            }
+            
+        }
+        return false;
+    }
+};
