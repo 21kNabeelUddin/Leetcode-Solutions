@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+        int ones = 0;
+        int maxsum = 0;
+        int zero = 0;
+        int left = 0;
+
+        for (int right = 0; right < nums.size(); right++) {
+            if (nums[right] == 1) {
+                ones++;
+            }
+            else if (nums[right] == 0) {
+                zero++;
+            }
+
+            while (zero > 1) {
+                if (nums[left] == 0) {
+                    zero--;
+                }
+                else {
+                    ones--;
+                }
+                left++;
+            }
+
+            maxsum = max(maxsum, right - left); // we delete one element, so window size - 1
+        }
+
+        // Edge case: all 1s
+        if (zero == 0) {
+            return nums.size() - 1;
+        }
+
+        return maxsum;
+    }
+};
