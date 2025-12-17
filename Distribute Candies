@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        int n = candyType.size();
+        int maxEat = n / 2;
+
+        // Sort candies so duplicates are adjacent
+        sort(candyType.begin(), candyType.end());
+
+        int uniqueCount = 1;  // first candy is always counted
+        for (int i = 1; i < n; i++) {
+            if (candyType[i] != candyType[i - 1]) {
+                uniqueCount++;
+            }
+        }
+
+        // She can eat at most n/2 candies
+        return min(uniqueCount, maxEat);
+    }
+};
