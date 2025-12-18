@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        if(image.size()==0)
+        {
+            return image;
+        }
+
+        for(int i=0; i<image.size();i++)
+        {
+            reverse(image[i].begin(), image[i].end());
+            for(int j=0; j<image.size();j++)// if this was not a square matrix where rowsize==cloumnsize this would not run
+            {
+                image[i][j]=1-image[i][j];
+            }
+        }
+        return image;
+    }
+};
