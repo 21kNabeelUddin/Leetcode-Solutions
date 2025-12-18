@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minBitFlips(int start, int goal) {
+       int count=0;
+       int track=start^goal;
+       while(track!=0)
+       {
+        if(track & 1)
+        {
+            count++;
+        }
+        track=track>>1;
+       }
+        return count;
+    }
+
+};
